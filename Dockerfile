@@ -1,8 +1,8 @@
 FROM alpine:3.12
 LABEL maintainer="Erick Reyna <erickueen@resuelve.mx>"
 ARG DEBIAN_FRONTEND=noninteractive
-ENV ERLANG_VERSION=23.3.4
-ENV ELIXIR_COMMIT=308255bda81e7f76f9bec838cef033e8e869981b
+ENV ERLANG_VERSION=24.3.4
+ENV ELIXIR_COMMIT=7e4fbe657dbf9c3e19e3d2bd6c17cc6d724b4710
 ENV NODE_VERSION=12.18.3
 ENV PHOENIX_VERSION=1.5.14
 
@@ -38,7 +38,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 RUN touch ~/.bashrc
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-ENV KERL_CONFIGURE_OPTIONS --disable-silent-rules --without-javac --enable-shared-zlib --enable-dynamic-ssl-lib --enable-hipe --enable-sctp --enable-smp-support --enable-threads --enable-kernel-poll --enable-wx --disable-debug --without-javac --enable-darwin-64bit
+ENV KERL_CONFIGURE_OPTIONS --disable-silent-rules --without-javac --enable-shared-zlib --enable-dynamic-ssl-lib --enable-hipe --disable-sctp --enable-smp-support --enable-threads --enable-kernel-poll --enable-wx --disable-debug --without-javac --enable-darwin-64bit
 RUN cd ~/.asdf && git checkout "$(git describe --abbrev=0 --tags)"
 ENV PATH /root/.asdf/bin:/root/.asdf/shims:${PATH}
 RUN /bin/bash -c "source ~/.bashrc"
