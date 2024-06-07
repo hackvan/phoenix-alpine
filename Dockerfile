@@ -1,38 +1,37 @@
 FROM alpine:3.12
-LABEL maintainer="Erick Reyna <erickueen@resuelve.mx>"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV ERLANG_VERSION=24.3.4
-ENV ELIXIR_COMMIT=7e4fbe657dbf9c3e19e3d2bd6c17cc6d724b4710
+ENV ELIXIR_COMMIT=81d6007410b3ae43e279cfb689bd03ffc5f06830
 ENV NODE_VERSION=12.18.3
 ENV PHOENIX_VERSION=1.5.14
 
 RUN \
     apk add --no-cache --update \
-      bash \
-      ca-certificates \
-      openssl-dev \
-      ncurses-dev \
-      unixodbc-dev \
-      zlib-dev curl gcc \
-      make automake \
-      autoconf gnupg nodejs npm \
-      inotify-tools
+    bash \
+    ca-certificates \
+    openssl-dev \
+    ncurses-dev \
+    unixodbc-dev \
+    zlib-dev curl gcc \
+    make automake \
+    autoconf gnupg nodejs npm \
+    inotify-tools
 RUN \
     apk add --no-cache \
-      dpkg-dev \
-      dpkg \
-      binutils \
-      git \
-      autoconf \
-      build-base \
-      perl-dev
-  RUN apk --no-cache add -U musl musl-dev ncurses-libs libssl1.1 libressl3.1-libcrypto bash \
-      qt5-qtwebkit qt5-qtbase-x11 qt5-qtsvg qt5-qtdeclarative qt5-qtsvg qt5-qtbase
-  RUN apk add --update-cache \
-      xvfb \
-      dbus \
-      ttf-freefont \
-      fontconfig wkhtmltopdf
+    dpkg-dev \
+    dpkg \
+    binutils \
+    git \
+    autoconf \
+    build-base \
+    perl-dev
+RUN apk --no-cache add -U musl musl-dev ncurses-libs libssl1.1 libressl3.1-libcrypto bash \
+    qt5-qtwebkit qt5-qtbase-x11 qt5-qtsvg qt5-qtdeclarative qt5-qtsvg qt5-qtbase
+RUN apk add --update-cache \
+    xvfb \
+    dbus \
+    ttf-freefont \
+    fontconfig wkhtmltopdf
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
